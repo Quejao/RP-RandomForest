@@ -1,5 +1,5 @@
 # Load scikit's random forest classifier library
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.neighbors.nearest_centroid import NearestCentroid
 from sklearn.datasets import load_iris
 
 # Load pandas
@@ -13,11 +13,11 @@ np.random.seed(0)
 
 
 classes = ['bangla','oriya','persian','roman']
-# df = pd.read_csv("/home/todos/alunos/cm/a1136844/Downloads/lbp-octave/vetoresAleatoriolbp.csv")
-# df = pd.read_csv("/home/todos/alunos/cm/a1136844/Downloads/lbp-octave/vetoresFixolbp.csv")
-df = pd.read_csv("/home/todos/alunos/cm/a1136844/Downloads/lpq-octave/vetoresAleatoriolpq.csv")	
-# df = pd.read_csv("/home/todos/alunos/cm/a1136844/RP-RandomForest/vetoresAleatorio.csv")
-rotulos = pd.read_csv("/home/todos/alunos/cm/a1136844/RP-RandomForest/vetoresAleatorioROTULOS.csv")
+# df = pd.read_csv("/home/lcorra/Documentos/RP/Base/lpq-octave/vetoresAleatoriolpq.csv")	
+# df = pd.read_csv("/home/lcorra/Documentos/RP/Base/lpq-octave/vetoresFixolpq.csv")	
+# df = pd.read_csv("/home/lcorra/Documentos/RP/Base/lbp-octave/vetoresAleatoriolbp.csv")
+df = pd.read_csv("/home/lcorra/Documentos/RP/Base/lbp-octave/vetoresFixolbp.csv")
+rotulos = pd.read_csv("/home/lcorra/Documentos/RP/Base/vetoresAleatorioROTULOS.csv")
 c_treino = 0
 c_teste = 0
 treino=pd.DataFrame(columns = df.columns)
@@ -46,7 +46,7 @@ features=df.columns[:len(df.columns)-2]
 y=pd.factorize(train['Classes'])[0]
 # print(train[features])
 
-clf=RandomForestClassifier(n_jobs=-1, random_state = 0, n_estimators=300)
+clf=NearestCentroid()
 # print(train[features])
 clf.fit(train[features],y)
 resultado=clf.predict(test[features])
